@@ -1,4 +1,5 @@
 import { useContext, useMemo, useState } from "react";
+import { Form } from "../components/Form";
 import { Person } from "../components/Person";
 import { DragonBallContext } from "../context/DragonBallContext";
 
@@ -19,7 +20,10 @@ export function DragonBallIndex({ children, title }: MyProps) {
             <h1 className="text-center font-bold text-4xl my-2">{title ? title : "Dragon Ball"}</h1>
             {children}
 
+            <Form onSubmit={(e) => {
+                console.log(e);
 
+            }} />
             <div className="flex my-4">
                 <p>Selecciona tu universo</p>
                 <select className="mx-2"
@@ -29,7 +33,7 @@ export function DragonBallIndex({ children, title }: MyProps) {
                     }}
                 >
                     {universes.map((u) => (
-                        <option value={u}>{u}</option>
+                        <option value={u} key={u}>{u}</option>
                     ))}
                 </select>
             </div>
